@@ -1,0 +1,93 @@
+@import '../../Styles/var';
+//
+// .header {
+
+// }
+
+.overHeader {
+  background-color: $violet;
+  padding: 8px 0;
+  &__flex {
+    @include flexible(space-between, center, nowrap);
+  }
+}
+//
+.user {
+  @include flexible(center, center, nowrap);
+  gap: 50px;
+  &__contact {
+    @include flexible(center, center, nowrap);
+    gap: 12px;
+    & > object {
+      margin-bottom: 3px;
+    }
+  }
+  &__interface {
+    @include flexible(center, center, nowrap);
+    gap: 20px;
+  }
+  &__name,
+  &__phone,
+  &__panel,
+  &__wishlist,
+  &__logout {
+    @include fonts(16px, 19px, normal, $white);
+  }
+  &__name {
+    & > span {
+      margin-left: 4px;
+      & > svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+//
+
+.user__wishlist,
+.user__panel,
+.user__cart,
+.user__logout,
+.user__name {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  transition: all 0.1s ease-in;
+  & > object {
+    position: relative;
+    z-index: -1;
+    margin-left: 3px;
+    width: 19px;
+    height: 19px;
+  }
+  &:hover {
+    color: $white;
+    transform: scale(1.05);
+    text-shadow: 0 0 3px $white;
+  }
+}
+.user__cart {
+  & > object {
+    width: 25px;
+    height: 25px;
+  }
+}
+.user__wishlist {
+  & > object {
+    margin-bottom: -2px;
+  }
+}
+.user__logout {
+  background-color: transparent;
+  border: none;
+  @include flexible(center, center, nowrap);
+  gap: 5px;
+  & > span {
+    margin-bottom: 5px;
+    & > svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

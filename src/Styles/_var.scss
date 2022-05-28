@@ -1,0 +1,83 @@
+// Colors
+$main-bgc: #f2f0ff;
+$pink-dark: #fb2e86;
+$shade: #eeeffb;
+$violet-dark: #9f63b5;
+$dark-blue: #151875;
+$blue-sky: #00c1fe;
+$white: #ffff;
+$blue-hover: #2f1ac4;
+$blue-sale: #3f509e;
+$orange-price-tag: #fb2448;
+$violet: #7e33e0;
+$grey-sub-text: #8a8fb9;
+$btn-color: #e0d3f5;
+$white-sub-text: #f1f1f1;
+$dark: #0d0e43;
+$black: #000000;
+$blue-text: #1a0b5b;
+$input-border: #c2c5e1;
+$input-color: #9096b2;
+
+//
+
+//
+$linear-bg: linear-gradient(121.53deg, #f3f9ff 0%, #f1f0ff 100%);
+$blue-gradient: linear-gradient(135deg, #1389ff 0%, #1db4e7 100%);
+$pink-gradient: linear-gradient(135deg, #fa3be5 0%, #ff289f 100%);
+$sky-blue-gradient: linear-gradient(135deg, #46d9ff 0%, #19a5f9 100%);
+$mint-green-gradient: linear-gradient(132.4deg, #36e6d5 4.14%, #29e871 100%);
+
+// Mixins
+@mixin fonts($fs, $lh, $fw, $color) {
+  font-size: $fs;
+  line-height: $lh;
+  font-weight: $fw;
+  color: $color;
+}
+@mixin container($width) {
+  max-width: $width;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: content-box;
+}
+@mixin flexible($jc, $ai, $wrap) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-wrap: $wrap;
+}
+@mixin btns($bgc, $width, $height) {
+  background-color: $bgc;
+  width: $width;
+  height: $height;
+}
+.container {
+  @include container(1200px);
+}
+.container-products {
+  @include container(1170px);
+}
+.container-carousel {
+  @include container(1370px);
+}
+// Selectors
+.h1 {
+  @include fonts(53px, 82px, bold, $black);
+  letter-spacing: 0.015em;
+}
+.h2 {
+  @include fonts(42px, 49px, bold, $blue-text);
+}
+.h3 {
+  @include fonts(36px, 42px, bold, $blue-text);
+}
+.h4 {
+  @include fonts(32px, 38px, bold, $blue-text);
+}
+.h5 {
+  @include fonts(22px, 26px, bold, $dark-blue);
+}
+
+// KeyFrames
+// Media

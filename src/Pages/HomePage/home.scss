@@ -1,0 +1,75 @@
+@import '../../Styles/var';
+
+// Main Section
+.main__title,
+.main__subtitle {
+  margin-bottom: 12px;
+}
+.main__subtitle {
+  @include fonts(16px, 28px, bold, $pink-dark);
+}
+.main__about {
+  max-width: 655px;
+}
+.main__product {
+  width: 50%;
+  & > object {
+    max-width: 100%;
+  }
+}
+.main__description {
+  @include fonts(16px, 28px, normal, $grey-sub-text);
+  margin-bottom: 25px;
+}
+.main__btn {
+  @include flexible(center, center, nowrap);
+  @include btns($pink-dark, 163px, 50px);
+  @include fonts(17px, 20px, normal, $white);
+  &:hover {
+    color: $white;
+  }
+}
+// flexible
+.flex__slide {
+  @include flexible(space-between, center, nowrap);
+}
+
+// Main Slides
+.carousel__slide {
+  min-height: 765px;
+  background-color: $main-bgc;
+  display: grid;
+}
+
+/// Carousel style Main Page
+.ant-carousel .slick-dots {
+  bottom: 50px;
+}
+
+.ant-carousel .slick-dots li.slick-active {
+  width: 10px;
+  height: 10px;
+  & > button {
+    width: 10px;
+    height: 10px;
+    transform: rotate(-45deg);
+    background-color: $pink-dark;
+    border: 1px solid $pink-dark;
+  }
+}
+
+.ant-carousel .slick-dots li {
+  width: 10px;
+  height: 10px;
+  & > button {
+    width: 10px;
+    height: 10px;
+    transform: rotate(-45deg);
+    border: 1px solid $pink-dark;
+    background-color: transparent;
+  }
+}
+
+.ant-carousel .slick-dots {
+  gap: 11px;
+}

@@ -1,0 +1,31 @@
+@import '../../../Styles/var';
+
+.header {
+  &__menu {
+    padding: 20px 0;
+  }
+  &__flex {
+    @include flexible(space-between, center, nowrap);
+  }
+  &__list {
+    @include flexible(center, center, nowrap);
+    &-item {
+      padding: 10px 16px;
+    }
+  }
+  &__panel {
+    @include flexible(center, center, nowrap);
+  }
+  &__logo {
+    margin-right: 90px;
+  }
+  &__homeLogo {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    & > object {
+      position: relative;
+      z-index: -1;
+    }
+  }
+}
