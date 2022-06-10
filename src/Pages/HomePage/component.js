@@ -4,6 +4,7 @@ import { Carousel } from 'antd';
 import './home.scss';
 //
 import Slide from '../../Components/Carousel/component';
+import Shop from '../Shop/component';
 //
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
         <Slide />
         <Slide />
       </Carousel>
+      <Shop />
     </main>
   );
 };

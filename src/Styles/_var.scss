@@ -18,6 +18,7 @@ $black: #000000;
 $blue-text: #1a0b5b;
 $input-border: #c2c5e1;
 $input-color: #9096b2;
+$sub-footer-bgc: #e7e4f8;
 
 //
 
@@ -60,6 +61,9 @@ $mint-green-gradient: linear-gradient(132.4deg, #36e6d5 4.14%, #29e871 100%);
 }
 .container-carousel {
   @include container(1370px);
+}
+.container__footer {
+  @include container(1000px);
 }
 // Selectors
 .h1 {

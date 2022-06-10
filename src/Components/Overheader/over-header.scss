@@ -54,6 +54,7 @@
   display: inline-block;
   z-index: 1;
   transition: all 0.1s ease-in;
+  cursor: pointer;
   & > object {
     position: relative;
     z-index: -1;

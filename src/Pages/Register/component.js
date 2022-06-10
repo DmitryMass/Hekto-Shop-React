@@ -1,12 +1,14 @@
 import React from 'react';
-import { Field, Form, Formik } from 'formik';
-import { validationRegister } from '../../Components/ValidationScheme/Login-Register/component';
 import { Link } from 'react-router-dom';
+//
+import { Field, Form, Formik } from 'formik';
+//
+import { validationRegister } from '../../Components/ValidationScheme/Login-Register/component';
 import Input from '../../Components/Input/component';
-
+import { ROUTES } from '../../Components/Constant/constant';
+import { registerUser } from '../../Api/Reg-Login-Api/component';
 //
 import '../Login/login.scss';
-import { registerUser } from '../../Api/Reg-Login-Api/component';
 //
 
 const RegisterPage = () => {
@@ -57,7 +59,7 @@ const RegisterPage = () => {
                 </button>
                 <div className="register__info">
                   By registering, you agree to the
-                  <Link to="/agreement"> user agreement</Link>
+                  <Link to={ROUTES.AGREEMENT}> user agreement</Link>
                 </div>
               </div>
             </Form>

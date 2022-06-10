@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 //
 import DropDown from '../DropDown/component';
+import MainLogo from '../../MainLogo/component';
 //
 import './header-menu.scss';
 //
-import { Link } from 'react-router-dom';
+import { mainHeaderLinks } from '../../../Data/HeaderData/headerData';
 //
-import Logo from '../../../Assets/icons/hekto-logo.svg';
+import { nanoid } from 'nanoid';
 
 const HeaderMenu = () => {
   return (
@@ -14,40 +16,22 @@ const HeaderMenu = () => {
       <div className="container header__flex">
         <div className="header__panel">
           <div className="header__logo">
-            <Link className="header__homeLogo" to="/">
-              <object data={Logo} type="" />
-            </Link>
+            <MainLogo />
           </div>
           <nav className="header__nav">
             <ul className="header__list">
               <li>
                 <DropDown />
               </li>
-              <li>
-                <Link className="header__list-item" to="/pages">
-                  Pages
-                </Link>
-              </li>
-              <li>
-                <Link className="header__list-item" to="/products">
-                  Products
-                </Link>
-              </li>
-              <li>
-                <Link className="header__list-item" to="/blog">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link className="header__list-item" to="/shop">
-                  Shop
-                </Link>
-              </li>
-              <li>
-                <Link className="header__list-item" to="/contact">
-                  Contact
-                </Link>
-              </li>
+              {mainHeaderLinks.map((item) => {
+                return (
+                  <li key={nanoid()}>
+                    <Link className="header__list-item" to={item.link}>
+                      {item.title}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </div>

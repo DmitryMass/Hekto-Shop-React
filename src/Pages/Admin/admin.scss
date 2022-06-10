@@ -1,0 +1,14 @@
+@import '../../Styles/var';
+.admin {
+  padding: 60px;
+}
+.admin__panel {
+  @include flexible(space-around, center, nowrap);
+}
+.admin__update,
+.admin__newProduct {
+  border-radius: 8px;
+  background-color: $shade;
+  box-shadow: 0px 0px 25px 10px #f8f8fb;
+  padding: 25px;
+}

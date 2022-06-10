@@ -1,14 +1,21 @@
 import React from 'react';
-import { validationLogin } from '../../Components/ValidationScheme/Login-Register/component';
+import { Link, useNavigate } from 'react-router-dom';
 //
 import { Field, Form, Formik } from 'formik';
 //
-import { Link } from 'react-router-dom';
-import Input from '../../Components/Input/component';
-import './login.scss';
+import { validationLogin } from '../../Components/ValidationScheme/Login-Register/component';
 import { loginUser } from '../../Api/Reg-Login-Api/component';
+import Input from '../../Components/Input/component';
+import { ADMIN_ROUTE, ROUTES } from '../../Components/Constant/constant';
+
+//
+//
+import './login.scss';
+//
+//
 //
 const LoginPage = ({ setUserInfo }) => {
+  let navigate = useNavigate();
   return (
     <div className="login">
       <div className="container">
@@ -30,6 +37,11 @@ const LoginPage = ({ setUserInfo }) => {
                 const userInfo = await loginUser(formData);
                 resetForm();
                 setUserInfo(userInfo);
+                if (userInfo.role === 'ADMIN') {
+                  navigate(ADMIN_ROUTE);
+                } else {
+                  navigate(ROUTES.HOME);
+                }
                 localStorage.userInfo = JSON.stringify(userInfo);
               } catch (error) {
                 setFieldError(error.message.name, error.message.info);
@@ -51,7 +63,7 @@ const LoginPage = ({ setUserInfo }) => {
                   type="password"
                   component={Input}
                 />
-                <Link to="/forgotpassword">Forgot your password?</Link>
+                <Link to={ROUTES.FORGOTPASSWORD}>Forgot your password?</Link>
                 <button className="login__btn" type="submit">
                   Sign in
                 </button>
@@ -59,7 +71,9 @@ const LoginPage = ({ setUserInfo }) => {
             </Form>
           </Formik>
           <div className="login__register">
-            <Link to="/register">Don’t have an Account? Create account</Link>
+            <Link to={ROUTES.REGISTER}>
+              Don’t have an Account? Create account
+            </Link>
           </div>
         </div>
       </div>

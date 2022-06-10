@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 //
 import phone from '../../Assets/icons/phoneLogo.svg';
@@ -10,14 +10,27 @@ import { LogoutOutlined, AuditOutlined } from '@ant-design/icons';
 //
 import './over-header.scss';
 //
+import { ADMIN_ROUTE, ROUTES } from '../Constant/constant';
+import Modal from '../Modal/component';
+
+//
 // { userInfo, logOutUser } props
 const OverHeader = ({ userInfo, logoutUser }) => {
+  const [modal, setModal] = useState(false);
+
+  const toggleSetModal = () => {
+    setModal((prevState) => !prevState);
+  };
+
   return (
     <div className="overHeader">
       <div className="container overHeader__flex">
         <div className="user">
           {userInfo ? (
-            <Link to="/personal" className="user__name">
+            <Link
+              to={userInfo.role === 'ADMIN' ? ADMIN_ROUTE : ROUTES.PERSONAL}
+              className="user__name"
+            >
               {userInfo.email}
               {<AuditOutlined />}
             </Link>
@@ -35,24 +48,37 @@ const OverHeader = ({ userInfo, logoutUser }) => {
                 Logout {<LogoutOutlined />}
               </button>
             ) : (
-              <Link className="user__panel" to="/login">
+              <Link to={ROUTES.LOGIN} className="user__panel">
                 Login
                 <object data={login} type=""></object>
               </Link>
             )}
           </div>
           <div className="link__wrapper">
-            <Link className="user__wishlist" to="/wishlist">
-              Wishlist <object data={likeLogo} type="" />
-            </Link>
+            {userInfo ? (
+              <Link to={ROUTES.WISHLIST} className="user__wishlist">
+                Wishlist <object data={likeLogo} type="" />
+              </Link>
+            ) : (
+              <div onClick={toggleSetModal} className="user__wishlist">
+                Wishlist <object data={likeLogo} type="" />
+              </div>
+            )}
           </div>
           <div className="link__wrapper">
-            <Link className="user__cart" to="/usercart">
-              <object data={cartLogo} type="" />
-            </Link>
+            {userInfo ? (
+              <Link to={ROUTES.CART} className="user__cart">
+                <object data={cartLogo} type="" />
+              </Link>
+            ) : (
+              <div onClick={toggleSetModal} className="user__cart">
+                <object data={cartLogo} type="" />
+              </div>
+            )}
           </div>
         </div>
       </div>
+      {modal ? <Modal setModal={setModal} /> : null}
     </div>
   );
 };

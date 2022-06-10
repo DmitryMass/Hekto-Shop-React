@@ -1,5 +1,9 @@
+import { HOST, ROUTES } from '../../Components/Constant/constant';
+// import jwt_decode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
+
 const request = async (url = null, method = 'GET', body = null) => {
-  const result = await fetch(`http://localhost:3001${url}`, {
+  const result = await fetch(`${HOST}${url}`, {
     method,
     body,
   });
@@ -15,10 +19,21 @@ const request = async (url = null, method = 'GET', body = null) => {
   return data;
 };
 
-export const registerUser = async (body) => {
-  return await request('/register', 'POST', body);
+export const registerUser = async (email, password) => {
+  const data = await request('/api/user/registration', 'POST', {
+    email,
+    password,
+    role: 'Admin',
+  });
+  localStorage.setItem('token', data.token);
+  // locastorage token не обязателен
+  return jwtDecode(data.token);
 };
 
 export const loginUser = async (body) => {
-  return await request('/login', 'POST', body);
+  // return await request('/api/user/login', 'POST', body);
+  const data = await request('/api/user/login', 'POST', body);
+  localStorage.setItem('token', data.token);
+  // locastorage token не обязателен
+  return jwtDecode(data.token);
 };

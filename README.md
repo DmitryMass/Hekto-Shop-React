@@ -13,3 +13,4 @@ FrontEnd: React / React Component / React Hooks / React Router
 Validation and Forms : Formik
 
 Styles and Ui: Ant / Scss.
+NanoId for key Prop

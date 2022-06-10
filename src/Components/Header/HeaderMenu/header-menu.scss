@@ -19,13 +19,4 @@
   &__logo {
     margin-right: 90px;
   }
-  &__homeLogo {
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-    & > object {
-      position: relative;
-      z-index: -1;
-    }
-  }
 }

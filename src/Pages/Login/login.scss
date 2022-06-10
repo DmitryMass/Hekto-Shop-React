@@ -25,6 +25,7 @@
 }
 .login__btn,
 .register__btn {
+  border-radius: 3px;
   border: none;
   margin-bottom: 25px;
   @include btns($pink-dark, 100%, 47px);
@@ -42,23 +43,13 @@
   width: 200px;
   margin: 0 auto;
 }
-
 .input {
   display: flex;
   position: relative;
   width: 100%;
+  height: 50px;
   & > input {
-    width: 100%;
-    height: 52px;
-    border: 1px solid $input-border;
-    border-radius: 2px;
-    padding: 15px;
-    @include fonts(16px, 19px, normal, $dark);
-    font-family: 'Lato', sans-serif;
-
-    &::placeholder {
-      @include fonts(16px, 19px, normal, $input-color);
-    }
+    height: 100%;
   }
   &__check {
     border: none;
@@ -70,4 +61,23 @@
     border: none;
     background-color: transparent;
   }
+}
+.input__error {
+  color: red;
+}
+.input__normal,
+.input__break {
+  width: 100%;
+  height: 52px;
+  border: 1px solid $input-border;
+  border-radius: 2px;
+  padding: 15px;
+  @include fonts(16px, 19px, normal, $dark);
+  font-family: 'Lato', sans-serif;
+  &::placeholder {
+    @include fonts(16px, 19px, normal, $input-color);
+  }
+}
+.input__break {
+  border: 1px solid red;
 }
